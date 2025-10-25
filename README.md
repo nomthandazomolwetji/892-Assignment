@@ -28,9 +28,12 @@ This repository contains a comprehensive econometric analysis examining the rela
 │   ├── Assignment.qmd           # Main analysis (Quarto document)
 │   └── Assignment.html          # Rendered HTML output
 ├── data/
-│   └── raw/
-│       ├── DATASET A.xlsx       # Population, unemployment, GDP data
-│       └── DATASET B.xlsx       # Trade and sectoral composition data
+│   ├── raw/
+│   │   ├── DATASET A.xlsx       # Population, unemployment, GDP data
+│   │   └── DATASET B.xlsx       # Trade and sectoral composition data
+│   ├── interim/                 # Intermediate processed data
+│   └── processed/               # Final processed datasets
+├── reports/                     # Generated reports and outputs
 └── 772-892 Assignment 2025.pdf # Assignment instructions
 ```
 
@@ -62,8 +65,8 @@ install.packages(c(
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/nomthandazomolwetji/892-assignment.git
-   cd 892-assignment
+   git clone https://github.com/nomthandazomolwetji/892-Assignment.git
+   cd 892-Assignment
    ```
 
 2. **Open in RStudio**
@@ -160,14 +163,14 @@ This project is for educational purposes. Data sources retain their original lic
 
 ---
 
-## 🏆 Results Summary
+## 🏆 Assignment Submission
 
-**Final Score**: 100/100 marks achieved
-- ✅ Comprehensive data analysis
-- ✅ Professional R programming
-- ✅ Advanced statistical methods
-- ✅ Policy-relevant insights
-- ✅ Excellent code documentation
+**Status**: Submitted for grading
+- ✅ Comprehensive data analysis completed
+- ✅ Professional R programming implemented
+- ✅ Advanced statistical methods applied
+- ✅ Policy-relevant insights developed
+- ✅ Detailed code documentation provided
 
 ### Key Policy Implications
 1. **Differentiated Trade Policies**: Consider sectoral composition in trade liberalization
