@@ -42,7 +42,7 @@ This repository contains a comprehensive econometric analysis examining the rela
 ### Prerequisites
 
 - **R** (version 4.0 or higher): [Download here](https://cran.r-project.org/)
-- **RStudio** (recommended): [Download here](https://posit.co/download/rstudio-desktop/)
+- **Positron** (recommended): [Download here](https://github.com/posit-dev/positron)
 - **Quarto** (for rendering): [Download here](https://quarto.org/docs/get-started/)
 
 ### Required R Packages
@@ -69,8 +69,8 @@ install.packages(c(
    cd 892-Assignment
    ```
 
-2. **Open in RStudio**
-   - Open `notebooks/Assignment.qmd` in RStudio
+2. **Open in Positron**
+   - Open `notebooks/Assignment.qmd` in Positron
    - Set working directory to the project root
 
 3. **Run the analysis**
@@ -79,7 +79,7 @@ install.packages(c(
 
 4. **Render the final document**
    ```r
-   # In RStudio console
+   # In Positron console
    quarto::quarto_render("notebooks/Assignment.qmd")
    ```
 
