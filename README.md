@@ -131,7 +131,7 @@ install.packages(c(
 ## 🎓 Academic Context
 
 - **Course**: 772-892 Agricultural Economics
-- **Institution**: University assignment
+- **Institution**: Stellenbosch University
 - **Due Date**: October 27, 2025
 - **Methodology**: Quantitative econometric analysis
 - **Software**: R with tidyverse ecosystem
