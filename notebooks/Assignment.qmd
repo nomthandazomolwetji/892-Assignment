@@ -21,6 +21,14 @@ Now that you have improved your **R programming skills**, you must apply them.
 
 ```{r setup, message=FALSE, warning=FALSE}
 # Load required libraries
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("readxl")
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("here")
+install.packages("knitr")
+install.packages("rmarkdown")
+
 library(readxl)
 library(dplyr)
 library(tidyr)
@@ -75,9 +83,8 @@ head(dataset_b)
 
 # Step 2: Preparing the data
 
-1.  **\[5 marks\]** Clearly and concisely state your **research question** that you are trying to answer or explore using the steps below.
+1.   research question
 
-    -   *This step does not involve coding.*
 
 ## Research Question
 
@@ -87,33 +94,12 @@ This research question examines the relationship between: - **Merchandise import
 
 The analysis will help understand how international trade and economic structure affect labor market outcomes in different countries.
 
-2.  **\[5 marks\]** Clean the datasets in preparation for joining:
-
-    -   
-
-        a.  Import the datasets.
-
-    -   
-
-        b.  Reshape the data if needed.
-
-    -   
-
-        c.  Ensure all vectors are in the correct format.
-
-    -   
-
-        d.  Ensure all variable names are in **lowercase** and contain **no special characters**, except for spaces which should be replaced with underscores (`_`).
-
-    -   
-
-        e.  Join the two or more datasets to create a dataframe called **`df`**.
-
-        -   Larger datasets will get **more marks**.
+2.   Clean the datasets:
 
 ```{r data-cleaning}
 # a. Import datasets (already loaded above)
 # Check the structure again to understand reshaping needs
+install.packages("janitor")
 cat("Dataset A unique indicators:\n")
 print(unique(dataset_a$`Series Name`))
 
@@ -196,7 +182,7 @@ summary(df[, 3:7])  # Summary of numeric variables
 
 ## Step 3: Analysis and Reporting
 
-3.  **\[5 marks\]** Create at least **two new variables** to be used in the subsequent steps.
+3.  Create at least **two new variables** to be used in the subsequent steps.
 
 ```{r new-variables}
 # Create meaningful new variables for analysis
@@ -237,13 +223,14 @@ cat("\nLabor productivity categories:\n")
 table(df$labor_productivity_category)
 ```
 
-4.  **\[30 marks\]** Perform a **suitable exploratory data analysis (EDA)** on the data.
+4.   Perform a **suitable exploratory data analysis (EDA)** on the data.
 
-    -   Must include **at least three visualisations**, but can include more.
-    -   Include **accompanying text** to interpret the results.
 
 ```{r eda-setup}
 # Load visualization libraries
+install.packages("ggplot2")
+install.packages("corrplot")
+install.packages("gridExtra")
 library(ggplot2)
 library(corrplot)
 library(gridExtra)
@@ -275,7 +262,7 @@ p1 <- ggplot(df, aes(x = import_per_capita, y = unemployment_rate)) +
 print(p1)
 ```
 
-**Interpretation:** This visualization reveals the relationship between trade intensity (import per capita) and unemployment outcomes. Countries with higher import intensity show varied unemployment patterns, suggesting that trade openness alone doesn't determine employment outcomes. The color coding by labor productivity categories shows that high-productivity countries can have both high and low import intensities.
+**Interpretation:** This visualization demonstrates the relationship between trade intensity (import per capita) and unemployment outcomes. Countries with higher import intensity show varied unemployment patterns, suggesting that trade openness alone doesn't determine employment outcomes.
 
 ### Visualization 2: Economic Structure and Employment Vulnerability
 
@@ -295,7 +282,7 @@ p2 <- ggplot(df, aes(x = labor_productivity_category, y = employment_vulnerabili
 print(p2)
 ```
 
-**Interpretation:** This box plot clearly demonstrates that countries with lower labor productivity face significantly higher employment vulnerability. The vulnerability index combines both unemployment rates and productivity measures, showing a strong inverse relationship with productivity categories. This suggests structural economic challenges in low-productivity economies.
+**Interpretation:** This box plot demonstrates that countries with lower labor productivity face significantly higher employment vulnerability. The vulnerability index combines both unemployment rates and productivity measures, showing a strong inverse relationship with productivity categories. This suggests structural economic challenges in low-productivity economies.
 
 ### Visualization 3: Economic Diversification Analysis
 
@@ -320,7 +307,7 @@ p3b <- ggplot(df, aes(x = agriculture_value_added_pct, y = services_value_added_
 grid.arrange(p3a, p3b, ncol = 2)
 ```
 
-**Interpretation:** These paired visualizations show the relationship between economic structure and employment outcomes. The left plot reveals that countries with higher economic diversification (more services relative to agriculture) tend to have varied unemployment outcomes. The right plot shows the sectoral composition trade-off: countries with higher agricultural contribution typically have lower services contribution, and this structural difference is associated with different unemployment patterns.
+**Interpretation:** These visualizations show the relationship between economic structure and employment outcomes. The left plot reveals that countries with higher economic diversification (more services relative to agriculture) tend to have varied unemployment outcomes. The right plot shows the sectoral composition trade-off: countries with higher agricultural contribution typically have lower services contribution, and this structural difference is associated with different unemployment patterns.
 
 ### Visualization 4: Correlation Matrix Heatmap
 
@@ -353,7 +340,7 @@ The exploratory data analysis reveals several key insights relevant to our resea
 
 4.  **Multiple Factors Interact**: The correlation analysis suggests that merchandise imports and sectoral value added effects on employment work through complex interactions rather than simple direct relationships.
 
-5.  **\[15 marks\]** Calculate relevant **summary and other statistics** from the data.
+5.   Calculate relevant **summary and other statistics** from the data.
 
 ```{r summary-statistics}
 # Basic descriptive statistics by region/productivity level
@@ -436,7 +423,7 @@ cat(sprintf("P-value: %.4f\n", cor_test_result$p.value))
 
 **Statistical Summary Interpretation:** - Countries with higher labor productivity consistently show lower unemployment rates and higher economic diversification - There is significant variation in trade intensity across productivity levels, suggesting trade effects are conditional on economic structure - The correlation analysis reveals complex relationships where simple bivariate associations may mask important structural differences - Statistical tests help identify significant differences between agricultural and services-oriented economies
 
-6.  **\[15 marks\]** Create **at least two useful plots** (different from those in the EDA).
+6.  Create **at least two useful plots** 
 
 ```{r additional-plots}
 # Additional Plot 1: Trade-Employment Relationship by Economic Structure
@@ -492,9 +479,8 @@ print(p_add2)
 
 **Additional Plots Interpretation:** - **Plot 1** reveals that the relationship between trade volume and unemployment differs significantly between high-agriculture and low-agriculture economies, with different slopes suggesting structural differences in how trade affects employment - **Plot 2** decomposes employment vulnerability into its two components (unemployment and productivity), showing which factor drives vulnerability in the most affected countries - this helps identify whether policy should focus on job creation or productivity enhancement
 
-7.  **\[15 marks\]** Perform a **statistical or regression analysis** of the data, which could be relevant to your thesis.
+7.   Perform a **statistical or regression analysis** of the data.
 
-    -   Marks will be awarded for **suitability and originality**.
 
 ```{r regression-analysis}
 # REGRESSION ANALYSIS: Impact of Imports and Sectoral Value Added on Employment
@@ -597,7 +583,7 @@ print(scenario_results_rounded)
 
 ### Regression Analysis Results and Interpretation
 
-**Model Performance:** - Model 2 (Enhanced) shows superior performance with higher R² and better AIC - The interaction between import intensity and agricultural value added is statistically significant - Logistic regression successfully identifies factors associated with high employment vulnerability
+**Model Performance:** - Model 2 shows superior performance with higher R² and better AIC - The interaction between import intensity and agricultural value added is statistically significant - Logistic regression successfully identifies factors associated with high employment vulnerability
 
 **Key Findings:**
 
@@ -615,19 +601,7 @@ print(scenario_results_rounded)
 
 This analysis directly addresses the research question by quantifying how merchandise imports and sectoral value added jointly influence employment outcomes across the 50 countries in our sample.
 
-8.  **\[10 marks\]** Overall impression of your **code quality**:
-
-    -   
-
-        a.  Does your code run without problems?
-
-    -   
-
-        b.  Is your code clear and concise?
-
-    -   
-
-        c.  Are code blocks well described and logically structured?
+8.   Overall impression of your **code quality**:
 
 ## Code Quality Assessment
 
@@ -671,22 +645,3 @@ This analysis successfully addresses the research question: **"What is the impac
 -   Professional data visualization for clear communication of results
 
 This analysis demonstrates the application of rigorous quantitative methods to an important question in agricultural economics, providing both theoretical insights and practical policy guidance for understanding trade-employment linkages in developing and developed economies.
-
-## Total: 100 Marks
-
--   The **original data** and the **accompanying code** must be **shared on OneDrive**.
--   If your code fails to run, you will be required to fix it.
--   **Late submissions:** 2 marks deducted **per day**.
--   **Due date:** *27 October, 23:59.*
-
-# Recommended Databases
-
--   [World Bank Databank](https://databank.worldbank.org/)
--   [FAO Stat](https://www.fao.org/faostat/en/)
--   [Trademap](https://www.trademap.org/Index.aspx)
--   [OECD Databank](https://www.oecd.org/en/data.html)
--   [IMF Data Portal](https://data.imf.org/?sk=388dfa60-1d26-4ade-b505-a05a558d9a42)
--   [UN Data Portal](https://population.un.org/dataportal/)
--   [South African Reserve Bank Data](https://www.resbank.co.za/en/home/what-we-do/statistics/releases/online-statistical-query)
--   [EU Data Portal](https://data.europa.eu/en)
--   [Google Dataset Search](https://datasetsearch.research.google.com/)
